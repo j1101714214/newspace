@@ -4,7 +4,7 @@ spring:
     application:
         name: newspace
     datasource:
-        driver-class-name: com.mysql.jdbc.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
         url: jdbc:mysql://localhost:3306/toutiao?serverTimezone=UTC&userUnicode=true&useSSL=false&
         username: root
         password: j1101714214
