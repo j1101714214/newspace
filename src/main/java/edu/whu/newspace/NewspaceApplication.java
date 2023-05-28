@@ -1,8 +1,9 @@
 package edu.whu.newspace;
 
-import com.spring4all.swagger.EnableSwagger2Doc;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 
 /**
@@ -12,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2023/5/23 9:45
  */
 @SpringBootApplication
-@EnableSwagger2Doc
+@EnableSwagger2
 public class NewspaceApplication {
 
     public static void main(String[] args) {

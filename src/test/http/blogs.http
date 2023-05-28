@@ -1,0 +1,36 @@
+### 测试获取博客接口
+GET http://localhost:8888/blogs/all?pageNum=1&pageSize=1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLnjovlm5siLCJleHAiOjE2ODUyODg3NzAsImlhdCI6MTY4NTI3MDc3MH0.6XL-L7Q0hiYPabsDcEE1HO9kOlP0npFOuOKFZgAaQlNIDW9wt086ciSxx4mEEIrXkDwUBQ3Aja2eRSr4ImmFjA
+
+### 上传博客接口测试
+POST http://localhost:8888/blogs/post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLnjovlm5siLCJleHAiOjE2ODUyODg3NzAsImlhdCI6MTY4NTI3MDc3MH0.6XL-L7Q0hiYPabsDcEE1HO9kOlP0npFOuOKFZgAaQlNIDW9wt086ciSxx4mEEIrXkDwUBQ3Aja2eRSr4ImmFjA
+
+{
+  "title": "接口测试1",
+  "link": "https://www.baidu.com",
+  "userId": 1660947736294543368,
+  "content": "测试内容"
+}
+
+### 上传评论: 正常情况
+POST http://localhost:8888/comment/post/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLnjovlm5siLCJleHAiOjE2ODUyODg3NzAsImlhdCI6MTY4NTI3MDc3MH0.6XL-L7Q0hiYPabsDcEE1HO9kOlP0npFOuOKFZgAaQlNIDW9wt086ciSxx4mEEIrXkDwUBQ3Aja2eRSr4ImmFjA
+
+{
+  "content": "评论1",
+  "userId": 1660947736294543368
+}
+
+### 上传评论: 对不存在的博客上传评论
+POST http://localhost:8888/comment/post/10
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLnjovlm5siLCJleHAiOjE2ODUyODg3NzAsImlhdCI6MTY4NTI3MDc3MH0.6XL-L7Q0hiYPabsDcEE1HO9kOlP0npFOuOKFZgAaQlNIDW9wt086ciSxx4mEEIrXkDwUBQ3Aja2eRSr4ImmFjA
+
+{
+  "content": "评论1",
+  "userId": 1660947736294543368
+}

@@ -36,7 +36,7 @@ public class CodeGenerator {
         globalConfig.setOutputDir(System.getProperty("user.dir")+"/src/main/java");
         globalConfig.setOpen(false);
         globalConfig.setSwagger2(true);
-        globalConfig.setDateType(DateType.ONLY_DATE);
+        globalConfig.setFileOverride(true);
         globalConfig.setAuthor("Newspace");
         globalConfig.setFileOverride(true);
         globalConfig.setMapperName("%sMapper");
@@ -63,6 +63,6 @@ public class CodeGenerator {
         strategyConfig.setColumnNaming(NamingStrategy.underline_to_camel);
         autoGenerator.setStrategy(strategyConfig);
 
-        autoGenerator.execute();
+        // autoGenerator.execute();
     }
 }

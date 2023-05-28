@@ -1,0 +1,138 @@
+### 用户列表信息查询
+GET http://localhost:8888/user/list
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLotbXlha0iLCJleHAiOjE2ODUyODE3NTEsImlhdCI6MTY4NTI2Mzc1MX0.1bhZEGJu4Wm_grvnhVNn-TJIDd8Oq__zk7rtoCURNXKLrrGsvuR8x4Xov3bcwox384nb46u-TSxr-WBdAt3DDQ
+
+### 用户列表信息查询, 指定分页大小和当前页数
+GET http://localhost:8888/user/list?pageNum=1&pageSize=1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLotbXlha0iLCJleHAiOjE2ODUyODE3NTEsImlhdCI6MTY4NTI2Mzc1MX0.1bhZEGJu4Wm_grvnhVNn-TJIDd8Oq__zk7rtoCURNXKLrrGsvuR8x4Xov3bcwox384nb46u-TSxr-WBdAt3DDQ
+
+### 根据id查询用户信息
+GET http://localhost:8888/user/1660947736294543367
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLotbXlha0iLCJleHAiOjE2ODUyODE3NTEsImlhdCI6MTY4NTI2Mzc1MX0.1bhZEGJu4Wm_grvnhVNn-TJIDd8Oq__zk7rtoCURNXKLrrGsvuR8x4Xov3bcwox384nb46u-TSxr-WBdAt3DDQ
+
+### 更新id数据
+PUT http://localhost:8888/user/update/1660947736294543367
+Content-Type: application/json
+
+{
+  "name": "王五"
+}
+
+### 删除用户信息
+DELETE http://localhost:8888/user/delete/赵六?id=1662726638810456065
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLotbXlha0iLCJleHAiOjE2ODUyODE3NTEsImlhdCI6MTY4NTI2Mzc1MX0.1bhZEGJu4Wm_grvnhVNn-TJIDd8Oq__zk7rtoCURNXKLrrGsvuR8x4Xov3bcwox384nb46u-TSxr-WBdAt3DDQ
+
+### 删除用户信息(异常): 删除非本人信息
+DELETE http://localhost:8888/user/delete/王五?id=1660947736294543367
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLotbXlha0iLCJleHAiOjE2ODUyODE3NTEsImlhdCI6MTY4NTI2Mzc1MX0.1bhZEGJu4Wm_grvnhVNn-TJIDd8Oq__zk7rtoCURNXKLrrGsvuR8x4Xov3bcwox384nb46u-TSxr-WBdAt3DDQ
+
+### 异常情况一: 查询不存在用户
+GET http://localhost:8888/user/1
+
+### 异常情况二: 修改不存在用户信息
+PUT http://localhost:8888/user/update/1
+Content-Type: application/json
+
+{
+  "name": "王五"
+}
+
+### 异常情况三: 删除不存在用户
+DELETE http://localhost:8888/user/delete/张麻子?id=1660947736294543311
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLotbXlha0iLCJleHAiOjE2ODUyODE3NTEsImlhdCI6MTY4NTI2Mzc1MX0.1bhZEGJu4Wm_grvnhVNn-TJIDd8Oq__zk7rtoCURNXKLrrGsvuR8x4Xov3bcwox384nb46u-TSxr-WBdAt3DDQ
+
+
+### 用户注册正常状态
+POST http://localhost:8888/user/register
+Content-Type: application/json
+
+{
+  "name": "赵六",
+  "password": "666666666",
+  "verifyCode": "4UF9"
+}
+
+
+### 用户注册异常状态一: 用户名重复
+POST http://localhost:8888/user/register
+Content-Type: application/json
+
+{
+  "name": "赵六",
+  "password": "666666666",
+  "verifyCode": "4UF9"
+}
+
+### 用户注册异常状态二: 用户名为空
+POST http://localhost:8888/user/register
+Content-Type: application/json
+
+{
+  "name": "",
+  "password": "666666666",
+  "verifyCode": "4UF9"
+}
+
+### 用户注册异常状态二: 密码为空
+POST http://localhost:8888/user/register
+Content-Type: application/json
+
+{
+  "name": "赵六",
+  "password": "",
+  "verifyCode": "4UF9"
+}
+
+
+### 用户注册异常状态二: 密码过短
+POST http://localhost:8888/user/register
+Content-Type: application/json
+
+{
+  "name": "赵六2号",
+  "password": "111",
+  "verifyCode": "4UF9"
+}
+
+
+### 测试用户登录
+POST http://localhost:8888/auth/login
+Content-Type: application/json
+
+{
+  "username": "王四",
+  "password": "QD8yyPDPh9Piwix"
+}
+
+### 异常情况一: 用户不存在
+POST http://localhost:8888/auth/login
+Content-Type: application/json
+
+{
+  "username": "赵六1",
+  "password": "666666666"
+}
+
+### 异常情况二: 用户账号密码不配对
+POST http://localhost:8888/auth/login
+Content-Type: application/json
+
+{
+  "username": "赵六",
+  "password": "666666666156"
+}
+
+### 更新用户
+PUT http://localhost:8888/user/update/1660947736294543367
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLnjovkupQiLCJleHAiOjE2ODUyODc4NjksImlhdCI6MTY4NTI2OTg2OX0.A_9eTP8KbF34z7whqORWvZavQnYCM1-erwjkjv3wU5gQZhKUqjiPjHfWeomoVSAb5q1ZDNEV3ZAE4TLQFV4wQA
+
+{
+  "name": "王四"
+}

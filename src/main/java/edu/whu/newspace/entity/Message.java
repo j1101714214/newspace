@@ -2,7 +2,7 @@ package edu.whu.newspace.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
-import java.util.Date;
+import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
@@ -10,6 +10,8 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import javax.validation.constraints.NotEmpty;
 
 /**
  * <p>
@@ -22,22 +24,24 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @TableName("tt_message")
-@ApiModel(value="Message对象", description="消息推送")
+@ApiModel(value="Message对象", description="")
 public class Message implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+    @TableId("id")
+    private Long id;
 
     @TableField("from_id")
-    private Integer fromId;
+    @NotEmpty(message = "发件人不能为空")
+    private Long fromId;
 
     @TableField("to_id")
-    private Integer toId;
+    @NotEmpty(message = "收件人不能为空")
+    private Long toId;
 
     @TableField("content")
     private String content;
 
     @TableField("created_date")
-    private Date createdDate;
+    private LocalDateTime createdDate;
 
     @TableField("has_read")
     private Integer hasRead;
